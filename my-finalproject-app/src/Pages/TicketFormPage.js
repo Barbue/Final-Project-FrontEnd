@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
-import { useAuth } from "../Hooks/Auth";
+//import { useAuth } from "../Hooks/Auth";
 
 
 
@@ -9,16 +9,16 @@ import { useAuth } from "../Hooks/Auth";
 
 const TicketFormPage = (props) => {
 
-	const auth = useAuth()
+	//const auth = useAuth()
 	//instantiate navigator 
 	const navigate = useNavigate();
 	
 
 	const { setShouldRefresh, urlEndPoint } = props;
     const [title, setTitle] = useState("")
-	const [text, setText] = useState("")
+	const [description, setDescription] = useState("")
 	const [creator, setCreator] = useState("")
-    const [year, setYear] = useState("")
+    const [comments, setComments] = useState("")
     const [status, setStatus] = useState("")
     
 
@@ -32,12 +32,12 @@ const TicketFormPage = (props) => {
 		console.log(urlEndPoint)
 		const req =  {
             title: title,
-            text: text,
+            description: description,
             creator: creator,
-            year: year,
-            status: status
+            status: status,
+			comments: comments,
 		}
-
+        // e.preventDefault();
 
 		console.log(req);
         axios.post(`${urlEndPoint}/tickets/create-one`, req)
@@ -50,7 +50,7 @@ const TicketFormPage = (props) => {
             console.log(error);
           }); 
 
-		  //setShouldRefresh(false);
+		  props.setShouldRefresh(false);
     }
 
 
@@ -58,10 +58,10 @@ const TicketFormPage = (props) => {
 		
 		<div>
 
-		 {!auth.userToken && navigate("/login")}
+		 {/* {!auth.userToken && navigate("/login")} */}
 		 
 			
-		{auth.userToken && <><h1>Ticket Creation Form</h1>
+		 <h1>Ticket Creation Form</h1>
 			<label>Title: </label>
 			<input type="text" onChange={(e)=>{
 				setTitle(e.target.value)
@@ -69,9 +69,9 @@ const TicketFormPage = (props) => {
 			
 			<br/>
 			<br/> 
-			<label>Text: </label>
+			<label>Description: </label>
 			<textarea type="text" onChange={(e)=>{
-				setText(e.target.value)
+				setDescription(e.target.value)
 			}} />
 			<br/>
 			<br/>
@@ -81,16 +81,18 @@ const TicketFormPage = (props) => {
 			}}/>
             <br/>
 			<br/>
-            <label>Year: </label>
-			<input type= "text" onChange={(e)=>{
-				setYear(e.target.value)
-			}}/>
-            <br/>
-			<br/>
+          
             <label>Status: </label>
 			<input type="text" onChange={(e)=>{
 				setStatus(e.target.value)
 			}}/>
+			<br/>
+			<br/>
+			  <label>Comments: </label>
+			<textarea type= "text" onChange={(e)=>{
+				setComments(e.target.value)
+			}}/>
+            
 		
 
 			
@@ -108,11 +110,22 @@ const TicketFormPage = (props) => {
 			
 			<button onClick={()=>{
 				handleCreateTicket()
-				navigate("/")
+				navigate("/ticketslist")
+				window.location.reload(true)
+				
 			}}>Create Ticket</button>
+
+            <button onClick={()=>{
+			
+			navigate("/ticketslist")
+				
+			}}>Cancel</button>
+
+
+
 		
-		</>
-		}
+		{/* </> */}
+		{/* } */}
 
 		
 		</div>
@@ -120,3 +133,43 @@ const TicketFormPage = (props) => {
 }
 
 export default TicketFormPage
+
+
+
+
+
+// {auth.userToken && <><h1>Ticket Creation Form</h1>
+// 			<label>Title: </label>
+// 			<input type="text" onChange={(e)=>{
+// 				setTitle(e.target.value)
+// 			}} />
+			
+// 			<br/>
+// 			<br/> 
+// 			<label>Description: </label>
+// 			<textarea type="text" onChange={(e)=>{
+// 				setDescription(e.target.value)
+// 			}} />
+// 			<br/>
+// 			<br/>
+// 			<label>Creator: </label>
+// 			<input type="text" onChange={(e)=>{
+// 				setCreator(e.target.value)
+// 			}}/>
+//             <br/>
+// 			<br/>
+          
+//             <label>Status: </label>
+// 			<input type="text" onChange={(e)=>{
+// 				setStatus(e.target.value)
+// 			}}/>
+// 			<br/>
+// 			<br/>
+// 			  <label>Comments: </label>
+// 			<textarea type= "text" onChange={(e)=>{
+// 				setComments(e.target.value)
+// 			}}/>
+            
+		
+
+			
