@@ -1,37 +1,59 @@
 import { useState } from "react";
 import axios from 'axios';
+import { useNavigate  } from 'react-router-dom';
+
 
 const TicketCard = (props) => {
+
+  const navigate = useNavigate();
 
     const {ticket, urlEndPoint, setShouldRefresh } = props;
     console.log(ticket)
     const [title, setTitle] = useState(ticket.title);
-    const [text, setText] = useState(ticket.text);
+    const [description, setDescription] = useState(ticket.description);
     const [creator, setCreator] = useState(ticket.creator);
-    const [year, setYear] = useState(ticket.year);
-   //const [creationdate, setCreationdate] = useState(ticket.creationdate);
+    const [comments, setComments] = useState(ticket.comments);
     const [status, setStatus] = useState(ticket.status);
     const [isEditing, setIsEditing] = useState(false);
+
+    const reset = () => {
+      setTitle("");
+      setDescription("");
+      setCreator("");
+      setStatus("");
+      setComments("");
+    }
+
+    // const onSubmit = (e) => {
+    //   e.target.reset();
+    // };
+
+    
 
  
    
     const handleDeleteTicket = () => {
-      const response = axios.delete(`${urlEndPoint}/tickets/delete-one/${ticket.id}`)
+
+      setShouldRefresh(true)
+
+     const response = axios.delete(`${urlEndPoint}/tickets/delete-one/${ticket.id}`)
       .then(function (response) {
         console.log(response);
       },{
       'Content-Type': 'application/json'
       })
-
+      setShouldRefresh(false)
     }
+
     const handleUpdateTicket = () => {
+      
       setShouldRefresh(true);
       const req = {
         title: title,
-        text: text,
+        description: description,
         creator: creator,
-        year: year,
         status: status,
+        comments: comments,
         
        
     } 
@@ -41,14 +63,19 @@ const TicketCard = (props) => {
       },{
       'Content-Type': 'application/json'
       })
+      
       setShouldRefresh(false);
+     
     }
 
     return (
         <div>
         
           {!isEditing && <h2>Title: {ticket.title}</h2>}
-          {isEditing && (
+          {isEditing && ( 
+          <> 
+          <h2>Title: {ticket.title}</h2>
+
             <input
               type="text"
               value={title}
@@ -56,24 +83,28 @@ const TicketCard = (props) => {
                 setTitle(e.target.value);
               }}
             />
+           </>
+            
           )}
           {/* <br/> */}
-          {!isEditing && <p>Text: {ticket.text}</p>}
+          {!isEditing && <p>Description: {ticket.description}</p>}
           {isEditing && (
-                    <>
+            <> <p>Description: {ticket.description}</p>
+                    
             <textarea
               type="text"
-              value={text}
+              value={description}
               onChange={(e) => {
-                setText(e.target.value);
+                setDescription(e.target.value);
               }}
             />
-          </>
+           </>
           )}
           {/* <br/> */}
 
           {!isEditing && <p>Creator: {ticket.creator}</p>}
           {isEditing && (
+            <> <p>Creator: {ticket.creator}</p>
             <input
             type="text"
             value={creator}
@@ -81,23 +112,13 @@ const TicketCard = (props) => {
               setCreator(e.target.value);
             }}
           />
+         </>
           )}
-           <br/> 
+           {/* <br/>  */}
         
-          {!isEditing && <p>Year: {ticket.year}</p>}
-          {isEditing && (
-            <input
-              type="text"
-              value={year}
-              onChange={(e) => {
-                setYear(e.target.value);
-              }}
-            />
-          )}  
-           <br/>
-          
           {!isEditing && <p>Status: {ticket.status}</p>}
-          {isEditing && (
+          {isEditing && ( 
+            <> <p>Status: {ticket.status}</p>
             <input
               type="text"
               value={status}
@@ -105,28 +126,37 @@ const TicketCard = (props) => {
                 setStatus(e.target.value);
               }}
             />
+            </>
           )}
+          {!isEditing && <p>Comments: {ticket.comments}</p>}
+          {isEditing && ( 
+            <> <p>Comments: {ticket.comments}</p>
+            <textarea
+              type="text"
+              value={comments}
+              onChange={(e) => {
+                setComments(e.target.value);
+              }}
+            />
+
+        
+            </>
+          )} 
+
+           
             
                    
            
-          {/* <p>Is Complete: {blog.isComplete ? "Complete" : "Incomplete"}</p> */}
+         
           <p>ID: {ticket.id}</p>
-          <p>Creation Date: {ticket.creationdate}</p> 
-          <p>Last Modified: {ticket.lastModified}</p> 
+          <p>Creation Date: {ticket.createdAt.toString()}</p> 
+          <p>Last Modified: {ticket.lastModified.toString()}</p> 
 
 
 
-          {/* <p>
-            Completed Date: {blog.completedDate && blog.completedDate.toString()}
-          </p> */}
-          {/* <button
-            onClick={() => {
-              handleSetToDoComplete();
-            }}
-          >
-            Toggle Complete
-          </button> */}
+          
           <button onClick={() => {handleDeleteTicket();
+          window.location.reload(true)
           }}
           >
           Delete Ticket
@@ -147,15 +177,36 @@ const TicketCard = (props) => {
             onClick={() => {
               setIsEditing(false);
               handleUpdateTicket()
+              reset()
+              window.location.reload(true)
+              
             }}
           >
             Update Ticket
           </button>
-                }
+          }
+
+
+          {/* <button
+            onClick={() => {
+            navigate("/ticketslist")
+             
+          }}
+          >
+            Cancel
+          </button> */}
+                
+
+
+                
+
+
                 <br/>
                 <br/>
         </div>
       );
+      
 }
+
 
 export default TicketCard;
