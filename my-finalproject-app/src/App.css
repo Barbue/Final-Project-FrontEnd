@@ -71,12 +71,14 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
   font-weight: 1000;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   
+  
 }
 
 .link2 {
   color: seagreen;
   font-weight: 1000;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
 
 }
 
@@ -85,6 +87,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
    color:darkcyan;
   font-weight: 1000;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  
 
 
 }
@@ -94,6 +97,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
   color:lightseagreen;
  font-weight: 1000;
  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ 
 }
 
 .link5 {
@@ -101,6 +105,7 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
  color:seagreen;
  font-weight: 1000;
  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ 
 }
 
 h2 {
@@ -116,4 +121,11 @@ label {
 p {
   color: cadetblue;
   font-weight: 700;
+}
+
+form {
+
+  text-align: center;
+
+
 }
