@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Reset from "../Components/Reset";
 
 
 function SearchBar(props){
@@ -6,15 +8,45 @@ function SearchBar(props){
     // setting up the state 
     const [input, setInput] = useState("");
     const [field, setField] = useState("");
+    const navigate = useNavigate();
+
+    const {
+        ticketList,
+    } = props
 
     const handleOnSubmit = e => {
         e.preventDefault();
+       
         //show filtered results, call to function in App.js 
         props.filterTickets(input, field);
+
+        // if(checked === null){  //Test if something was checked
+        //     alert(checked_gender.value); //Alert the value of the checked.
+        //     } else {
+        //     alert('Nothing checked'); //Alert, nothing was checked.
+        //     }
+
+        
+
+        
+
+        
+
+        
+        
+
+        
+
+        
     } 
 
+    // const handleReset = () => {
+        
+       
+    // } 
+
     return (
-        <form onSubmit={handleOnSubmit}>
+        <form onSubmit={handleOnSubmit} >
             <label htmlFor="search">Search: </label>
             <input 
                 type="text" 
@@ -23,9 +55,16 @@ function SearchBar(props){
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 />
-            <button type="submit">
+                
+            <button type="submit" >
                 Search
             </button>
+            
+            <Reset />
+
+            {/* <button onClick={() => handleReset() }>
+                Reset
+            </button> */}
                 
                 {/* <br/> */}
                 <br/>
@@ -48,14 +87,14 @@ function SearchBar(props){
                 onChange={e => setField(e.target.value)}
                 checked={field === "creator"}
                 />
-            <label htmlFor="id">ID</label>
+            <label htmlFor="createdById">CreatedById</label>
             <input 
                 type="radio" 
-                id="id" 
-                name="id"
-                value="id"
+                id="createdById" 
+                name="createdById"
+                value="createdById"
                 onChange={e => setField(e.target.value)}
-                checked={field === "id"}
+                checked={field === "createdById"}
                 />
             <label htmlFor="status">Status</label>
             <input
@@ -68,9 +107,25 @@ function SearchBar(props){
                
             
             />
+            <label htmlFor="description">Description</label>
+            <input
+                type="radio"
+                id="description"
+                name="description"
+                value="description"
+                onChange={e => setField(e.target.value)}
+                checked={field === "description"}
+               
+            
+            />
             
         </form>
+
+        
     );
+
+    
+        
 }
 
 export default SearchBar;
