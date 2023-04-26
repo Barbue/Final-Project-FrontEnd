@@ -2,8 +2,9 @@
 //import { useAuth } from "../Hooks/Auth";
 //import { useNavigate  } from 'react-router-dom';
 //import Pagination from "../Components/Pagination";
+//import Sorting from "../Components/Sorting";
 import TicketCard from "../Components/TicketCard";
-import SearchBar from '../Components/SearchBar'
+import SearchBar from '../Components/SearchBar';
 
 
 //home page component 
@@ -21,38 +22,77 @@ const {
     console.log(ticketList)
 
 return (
-        <div>
-            {/* {!auth.userToken && navigate("/login")} */}
+
+<div>
+            
          <br/>
-            <SearchBar filterTickets={filterTickets}/>
+            <SearchBar filterTickets={filterTickets} ticketList={ticketList}/>
+
+            <br/>
             
-            {/* <h1>Ticket App</h1> */}
-            
+            <h1> Tickets </h1>
             
             {ticketList.map((item, index) => {
             
             
-            return (
+return (
             
-              <TicketCard
+            <TicketCard
             ticket={item}
             setTicketList={setTicketList}
             urlEndPoint={urlEndPoint}
             setShouldRefresh={setShouldRefresh}
-            key={index} />
-                );
+            key={index} 
+            />
+       );
             })}
-
-           
-
-           
-            
-            
         </div>
     )
 }
 
 export default TicketsList
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
