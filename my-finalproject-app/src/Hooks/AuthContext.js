@@ -11,6 +11,7 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [isVerified, setIsVerified] = useState(false);
+	const [userId, setUserId] = useState(null);
 	const [shouldRefresh, setshouldRefresh] = useState(false);
 	useEffect(() => {
 		const userToken = getUserToken();
@@ -20,8 +21,10 @@ const AuthProvider = ({ children }) => {
 	useEffect(() => {
 		const responseFetch = async () => {
 			const verifiedUser = await verifyUser(user);
+			console.log(verifiedUser)
 			if (verifiedUser.success) {
 				setIsVerified(true);
+				setUserId(verifiedUser.user.userId)
 			}
 			if (
 				verifiedUser.response &&
@@ -58,8 +61,9 @@ const AuthProvider = ({ children }) => {
 			login,
 			isVerified,
 			logout,
+			userId,
 		}),
-		[user, isVerified]
+		[user, isVerified, userId]
 	);
 
 	return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
