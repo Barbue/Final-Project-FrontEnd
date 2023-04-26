@@ -13,13 +13,14 @@ import Pagination from './Components/Pagination';
 import PrivatePage from './Pages/PrivatePage';
 import { Route, Routes} from "react-router-dom";
 import NavBar from './Components/NavBar';
-
-
+import Sorting from "./Components/Sorting"
+import { title } from 'process';
+import { useNavigate  } from 'react-router-dom';
+import EditTicketForm from './Components/EditTicketForm';
 
 const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
 
 function App() {
-
 
   //set up hooks for the state 
   const [ticketList, setTicketList] = useState([]);
@@ -27,10 +28,10 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [ticketsPerPage] = useState(3);
   //, setTicketsPerPage
+  const navigate = useNavigate
 
 
-
-  console.log(ticketList)
+  //console.log(ticketList)
   
 
   //load the ticket items from the back end 
@@ -50,27 +51,57 @@ function App() {
     // });
   
   },[shouldRefresh])
-   
-  //New code////////
+
+ 
+  // Pagination 
+  // so if current page is 1 and there are 5 tickets per page, then
+  // last index of page will be 5 
   const indexOfLastTicket = currentPage * ticketsPerPage;
+  
+  // so if last index  of last ticket is 5 and tickets per page is 5,
+  // then the index of first ticket will be 1 because index starts at 0.
   const indexOfFirstTicket = indexOfLastTicket - ticketsPerPage;
+
+  // so if the "indexOfFirstTicket" is "0" and the "indexOfLastTicket"
+  // is "5", then the displayed page will include indexes 0-4(tickets 1-5) and end with index 5, which is not included.
   const currentTickets = ticketList.slice(indexOfFirstTicket,indexOfLastTicket);
 
+  const sortTicketsAsc = () => {
+
+  const sortedTicketsAscending = [...ticketList].sort((a, b) => {
+     return a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
+  
+  });
+  setTicketList(sortedTicketsAscending)
+  console.log(sortedTicketsAscending);
+
+  }
+
+  const sortTicketsDsc = () => {
+  const sortedTicketsDescending = [...ticketList].sort((a, b) => {
+   return a.title.toLowerCase() > b.title.toLowerCase() ? -1 : 1
+});
+setTicketList(sortedTicketsDescending)
+  console.log(sortedTicketsDescending);
+
+}
 
 
-  const filterTickets = (input, field) => {
 
-    const filteredTickets = ticketList.filter((ticket) => {
-         return ticket[field].toLowerCase().includes(input.toLowerCase())
-     })
-
-    setTicketList(filteredTickets)
-    } 
+const filterTickets = (input, field) => {
+       
+const filteredTickets = ticketList.filter((ticket) => {
+          return ticket[field].toLowerCase().includes(input.toLowerCase())
+})
+setTicketList(filteredTickets)
+    
+};
     
 
   
-  return (
-    <div className="App-header">
+return (
+    
+<div className="App-header">
 
       <NavBar />
 
@@ -79,21 +110,29 @@ function App() {
 					<Route
 						index
 						element={ <>
-							<TicketsList ticketList={currentTickets} // without pagination it would be {ticketList}
+            
+            <Sorting sortTicketsDsc={sortTicketsDsc} sortTicketsAsc={sortTicketsAsc} />
+
+           
+        
+							
+        <TicketsList ticketList={currentTickets} // without pagination it would be {ticketList} 
           setTicketList={setTicketList}
           filterTickets={filterTickets}
           urlEndPoint={urlEndPoint} 
           setShouldRefresh={setShouldRefresh}
-         
-          />
+        />
 
           <Pagination 
            totalTickets={ticketList.length} 
            ticketsPerPage={ticketsPerPage}
            setCurrentPage={setCurrentPage}
-           /> 
+           
+           />
+             
            </> 
 						}
+           
 					/>
 					<Route
 						path="ticketform"
@@ -101,35 +140,86 @@ function App() {
 							<TicketFormPage urlEndPoint={urlEndPoint} setShouldRefresh={setShouldRefresh}/>
 						}
 					/>
-					{/* <Route
-						path="edit-blog/:id"
+					<Route
+						path="edit-ticket/:id"
 						element={
-							<EditBlog
-								blogsProps={blogs}
-								setShouldRefreshProps={setShouldRefresh}
+							<EditTicketForm
+              urlEndPoint={urlEndPoint}
+								ticketList={ticketList}
+								setShouldRefresh={setShouldRefresh}
 							/>
 						}
-					/> */}
+					/>
 				</Route>
 				<Route path="/registration" element={<RegistrationPage />} />
 				<Route path="/login" element={<LoginPage  />} />
 			</Routes>
 
-
-
-
-
-
-
-
-
-
-       {/* <RouterProvider router={router} /> */}
-    </div>
-  );
+</div>
+);
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//{/* <RouterProvider router={router} /> */}
+
+// const sortedTicketsAscending = ticketList.sort(
+  //   // (a, b) => 
+  //   //  a.title.localeCompare(b.title)
+  //   function(a, b){return a.title - b.title}
+    
+
+  // );
+  //setTicketList(sortedTicketsAscending)
+ //console.log(sortedTicketsAscending)
+
+// }
+
+// const sortedTicketsDsc = () => {
+ 
+    
+ 
+// const sortedTicketsDescending = ticketList.sort(
+//   function(a, b){return b.title - a.title }
+//   // (b, a) => 
+//      //b.title.localeCompare(a.title)
+
+     
+
+//   );
+//   console.log(sortedTicketsDescending)
+
+  
+  
+// }
+
+{/* <Route
+						path="edit-ticket/:id"
+						element={
+							<EditTicketForm
+              urlEndPoint={urlEndPoint}
+								ticketList={ticketList}
+								setShouldRefresh={setShouldRefresh}
+							/>
+						}
+					/> */}
 
 
 
