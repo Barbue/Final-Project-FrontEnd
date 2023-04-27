@@ -111,16 +111,18 @@ return (
 						index
 						element={ <>
             
-            <Sorting sortTicketsDsc={sortTicketsDsc} sortTicketsAsc={sortTicketsAsc} />
+            
 
            
-        
+           
 							
         <TicketsList ticketList={currentTickets} // without pagination it would be {ticketList} 
           setTicketList={setTicketList}
           filterTickets={filterTickets}
           urlEndPoint={urlEndPoint} 
           setShouldRefresh={setShouldRefresh}
+          sortTicketsDsc={sortTicketsDsc} 
+          sortTicketsAsc={sortTicketsAsc}
         />
 
           <Pagination 
