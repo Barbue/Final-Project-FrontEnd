@@ -5,6 +5,7 @@
 //import Sorting from "../Components/Sorting";
 import TicketCard from "../Components/TicketCard";
 import SearchBar from '../Components/SearchBar';
+import Sorting from "../Components/Sorting";
 
 
 //home page component 
@@ -17,6 +18,8 @@ const {
         urlEndPoint,
         setShouldRefresh, 
         filterTickets,
+        sortTicketsDsc,
+        sortTicketsAsc,
       } = props
     
     console.log(ticketList)
@@ -31,6 +34,9 @@ return (
             <br/>
             
             <h1> Tickets </h1>
+            <br/>
+            <Sorting sortTicketsDsc={sortTicketsDsc} sortTicketsAsc={sortTicketsAsc} />
+            <br/>
             
             {ticketList.map((item, index) => {
             
@@ -39,6 +45,7 @@ return (
             
             <TicketCard
             ticket={item}
+            ticketList={ticketList}
             setTicketList={setTicketList}
             urlEndPoint={urlEndPoint}
             setShouldRefresh={setShouldRefresh}
