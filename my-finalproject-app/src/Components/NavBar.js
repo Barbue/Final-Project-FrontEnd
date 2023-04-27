@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../Hooks/AuthContext";
 import { removeUserToken } from "../Hooks/authLocalStorage";
 import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 const NavBar = () => {
     
@@ -24,9 +25,10 @@ return (
 
          {isVerified && <Link className="link3" to="/registration"> Register </Link>}
 
-          <Link className="link4" to="/login"> Login </Link>
+          <Link className="link4" to="/login"> Login </Link> 
           
-         {isVerified && <button onClick={handleLogout}>Logout</button>}
+          
+         {isVerified && <Button variant="primary" size="sm" onClick={handleLogout}>Logout</Button>}
 
          
           </nav> 
@@ -53,7 +55,7 @@ export default NavBar;
 
 
 
-
+//<button onClick={handleLogout}>Logout</button>
 
 
 
