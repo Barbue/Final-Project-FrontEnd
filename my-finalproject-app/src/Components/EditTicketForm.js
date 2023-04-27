@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate, useParams  } from 'react-router-dom';
 import { useAuth } from '../Hooks/AuthContext';
+import Button from 'react-bootstrap/Button';
 
 function EditTicketForm(props) {
 
@@ -102,7 +103,7 @@ return (
               <br/>
 
            {/* <p>relatedTicketsIds: {ticket.relatedTicketsIds}</p> */}
-           <label>relatedTicketIds: </label>
+           <label>RelatedTicketIds: </label>
               <textarea
               type="text"
               value={relatedTicketIds}
@@ -114,7 +115,7 @@ return (
             <br/>
             <br/>
 
-           <label>assignedToUserId: </label>
+           <label>AssignedToUserId: </label>
               <input
               type="text"
               value={assignedToUserId}
@@ -161,51 +162,10 @@ return (
               <br/>
               <br/>
   
-           {/* <p>Status: {ticket.createdById}</p> */}
-           {/* <label>createdById: </label>
-              <input
-                type="text"
-                value={createdById}
-                name="createdById"
-                onChange={(e) => { setCreatedById(e.target.value) }}
-              /> */}
-              <br/>
-              <br/>
-            
-           {/* <p>Status: {ticket.createdAt}</p> */}
-           {/* <label>createdAt: </label>
-              <input
-                type="datetime-local"
-                value={createdAt}
-                name="createdAt"
-                onChange={(e) => { setCreatedAt(e.target.value) }}
-              /> */}
-              <br/>
-              <br/>
-
-            {/* <label>lastModified: </label>
-              <input
-                type="datetime-local"
-                value={lastModified}
-                name="lastModified"
-                onChange={(e) => { setLastModified(e.target.value) }}
-              /> */}
-              <br/>
-              <br/>
-
-            {/* <label>lastUpdatedById: </label>
-              <input
-                type="text"
-                value={lastUpdatedById}
-                name="lastUpdatedById"
-                onChange={(e) => { setLastUpdatedById(e.target.value) }}
-              /> */}
-              <br/>
-              <br/>
-             
-    <button onClick={() => { handleUpdateTicket() }}
-            > Update Ticket
-            </button>
+           
+   
+            <Button variant="success" onClick={() => {handleUpdateTicket()
+          }}>Update Ticket</Button>
             
              <br/>
              <br/>
@@ -222,6 +182,84 @@ export default EditTicketForm
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <p>Status: {ticket.createdById}</p> */}
+           {/* <label>createdById: </label>
+              <input
+                type="text"
+                value={createdById}
+                name="createdById"
+                onChange={(e) => { setCreatedById(e.target.value) }}
+              /> */}
+              {/* <br/>
+              <br/> */}
+            
+           {/* <p>Status: {ticket.createdAt}</p> */}
+           {/* <label>createdAt: </label>
+              <input
+                type="datetime-local"
+                value={createdAt}
+                name="createdAt"
+                onChange={(e) => { setCreatedAt(e.target.value) }}
+              /> */}
+              {/* <br/>
+              <br/> */}
+
+            {/* <label>lastModified: </label>
+              <input
+                type="datetime-local"
+                value={lastModified}
+                name="lastModified"
+                onChange={(e) => { setLastModified(e.target.value) }}
+              /> */}
+              {/* <br/>
+              <br/> */}
+
+            {/* <label>lastUpdatedById: </label>
+              <input
+                type="text"
+                value={lastUpdatedById}
+                name="lastUpdatedById"
+                onChange={(e) => { setLastUpdatedById(e.target.value) }}
+              /> */}
+              {/* <br/>
+              <br/> */}
+             
+
+
+
+
+
+
+
+
+
+
+
+///* <button onClick={() => { handleUpdateTicket() }}
+// > Update Ticket
+// </button> 
+
     // title: String,
     // description: String, 
     // relatedTicketIds:[String],
@@ -235,5 +273,5 @@ export default EditTicketForm
     // lastUpdatedById: {type: String, default: uuidv4},
 
 
-     {/* <h2>Title: {ticketList.title}</h2> */}
+     /* <h2>Title: {ticketList.title}</h2> */
       //window.location.reload(true)
