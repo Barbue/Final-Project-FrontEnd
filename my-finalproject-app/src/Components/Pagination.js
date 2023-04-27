@@ -1,5 +1,5 @@
 import React from 'react'
-//import { useState } from "react";
+import Button from 'react-bootstrap/Button';
 
 
 const Pagination = ({totalTickets, ticketsPerPage, setCurrentPage}) => {
@@ -16,7 +16,10 @@ const Pagination = ({totalTickets, ticketsPerPage, setCurrentPage}) => {
         {
            pages.map((page, i) => {
 
-           return <button key={i} onClick={() => setCurrentPage(page)}>{page}</button>
+           return <Button variant="success"  key={i} onClick={() => {setCurrentPage(page)
+           }}>{page}</Button> 
+
+           
 
            }) 
         }
@@ -27,3 +30,10 @@ const Pagination = ({totalTickets, ticketsPerPage, setCurrentPage}) => {
 }
 
 export default Pagination
+
+
+
+
+
+
+//<button key={i} onClick={() => setCurrentPage(page)}>{page}</button>

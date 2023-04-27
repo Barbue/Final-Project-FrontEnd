@@ -1,5 +1,6 @@
 import React from 'react';
-//import { useState } from "react";
+import { useState } from "react";
+import Button from 'react-bootstrap/Button';
 
 
 const Sorting = (props) => {
@@ -12,8 +13,13 @@ const Sorting = (props) => {
 return (
    <div>
      
-   <button onClick={() => {sortTicketsAsc()}}> Asc </button>
-   <button onClick={() => {sortTicketsDsc()}}> Dsc </button>
+   
+   <Button variant="success" size="sm" onClick={() => {sortTicketsAsc()
+          }}>Asc</Button>
+          {" "}
+
+   <Button variant="success" size="sm" onClick={() => {sortTicketsDsc()
+          }}>Dsc</Button>
 
   </div>
 
@@ -29,7 +35,8 @@ export default Sorting
 
 
 
-
+//<button onClick={() => {sortTicketsAsc()}}> Asc </button>
+//<button onClick={() => {sortTicketsDsc()}}> Dsc </button>
 
 
 

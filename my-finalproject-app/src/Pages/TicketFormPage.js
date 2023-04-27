@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
-//import { useAuth } from "../Hooks/Auth";
+import Button from 'react-bootstrap/Button';
 
 const TicketFormPage = (props) => {
 
@@ -66,8 +66,9 @@ const TicketFormPage = (props) => {
 return (
 
 <div>
-
+             <br/>
 		     <h1>Ticket Creation Form</h1>
+			 <br/>
 			<label>Title:</label>
 			<input type="text" onChange={(e)=>{
 				setTitle(e.target.value)
@@ -92,7 +93,7 @@ return (
 			<br/>
 			<br/>
 
-			<label>assignedToUserId:</label>
+			<label>AssignedToUserId:</label>
 			<textarea type="text" onChange={(e)=>{
 				setAssignedToUserId(e.target.value)
 			}} />
@@ -155,10 +156,18 @@ return (
 		    <br/>
 			<br/>
 			
-<button onClick={()=>{ handleCreateTicket(); navigate("/") 
-                }}>Create Ticket</button>
 
-<button onClick={()=>{ navigate("/") }}>Cancel</button>
+
+
+<Button variant="success" onClick={() => {handleCreateTicket(); navigate("/")}}>Create Ticket</Button>
+{" "}
+
+<Button variant="success" onClick={() => {navigate("/")
+          }}>Cancel</Button>
+
+
+
+
 
 </div>
 )
@@ -172,6 +181,12 @@ export default TicketFormPage
        
         
 
+
+
+//<button onClick={()=>{ handleCreateTicket(); navigate("/") 
+//}}>Create Ticket</button>
+
+//<button onClick={()=>{ navigate("/") }}>Cancel</button>
 
 
 //window.location.reload(true)

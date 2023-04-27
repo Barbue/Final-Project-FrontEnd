@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Hooks/AuthContext";
+import Button from 'react-bootstrap/Button';
 
 export default function Login() {
 	const [email, setEmail] = useState("");
@@ -23,8 +24,10 @@ export default function Login() {
 	};
 	return (
 		<div>
+			<br/>
 			<h1>Login Page</h1>
-			<label htmlFor="email">Email:</label>
+			<br/>
+			<label htmlFor="email">Email: </label>
 			<input
 				type="text"
 				name="email"
@@ -32,20 +35,32 @@ export default function Login() {
 				onChange={(e) => setEmail(e.target.value)}
 			/>
 			<br />
-			<label htmlFor="password">Password:</label>
+			<br />
+			
+			<label htmlFor="password">Password: </label>
 			<input
 				type="text"
 				name="password"
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}
 			/>
-			<button onClick={handleSubmit}>Login</button>
+			{" "}
+			
+			<Button variant="primary" size="sm" onClick={handleSubmit
+          }>Login</Button>
 		</div>
 	);
 }
 
 
 
+
+
+
+
+ //() => {handleSubmit()
+//}}
+//<button onClick={handleSubmit}>Login</button>
 
 
 

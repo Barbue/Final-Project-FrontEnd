@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { registerUser } from "../Hooks/authUtils";
 import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 export default function Registration() {
 	const [email, setEmail] = useState("");
@@ -23,8 +24,10 @@ export default function Registration() {
 
 	return (
 		<div>
+			 <br/>
 			<h1>Registration Page</h1>
-			<label htmlFor="email">Email:</label>
+			<br/>
+			<label htmlFor="email">Email: </label>
 			<input
 				type="text"
 				name="email"
@@ -32,14 +35,17 @@ export default function Registration() {
 				onChange={(e) => setEmail(e.target.value)}
 			/>
 			<br />
-			<label htmlFor="password">Password:</label>
+			<br/>
+			<label htmlFor="password">Password: </label>
 			<input
 				type="text"
 				name="password"
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}
 			/>
-			<button onClick={handleSubmit}>Register</button>
+			{" "}
+			<Button variant="primary" size="sm" onClick={handleSubmit
+          }>Register</Button>
 		</div>
 	);
 }
@@ -59,7 +65,7 @@ export default function Registration() {
 
 
 
-
+//<button onClick={handleSubmit}>Register</button>
 
 
 // import { useState } from "react";

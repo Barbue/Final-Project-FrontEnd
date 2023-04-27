@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Reset from "../Components/Reset";
+import Button from 'react-bootstrap/Button';
 
 
 function SearchBar(props){
@@ -55,10 +56,15 @@ function SearchBar(props){
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 />
+                {" "}
                 
-            <button type="submit" >
+            {/* <button type="submit" >
                 Search
-            </button>
+            </button> */}
+           
+            <Button variant="primary" size="sm" type="submit">
+            Search
+        </Button> {"  "}
             
             <Reset />
 

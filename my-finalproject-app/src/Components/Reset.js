@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 const Reset = (props) => {
 
@@ -9,8 +10,10 @@ const Reset = (props) => {
 
 return (
 
-    <button onClick={()  => {window.location.reload(true)}}>Reset</button>
-
+   
+    
+    <Button variant="success" size="sm" onClick={() => {window.location.reload(true)
+    }}>Reset</Button>
     
 
 
@@ -22,7 +25,7 @@ return (
 };
 
 
-
+//<button onClick={()  => {window.location.reload(true)}}>Reset</button>
 
 
 
