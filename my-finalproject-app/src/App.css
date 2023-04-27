@@ -118,10 +118,18 @@ label {
  
 }
 
-p {
+ p {
   color: cadetblue;
   font-weight: 700;
-}
+  font-size: 90%; 
+ } 
+
+/* small {
+  color: cadetblue;
+  font-weight: 500;
+  /* font-size: 60%; */
+/* }  */ */
+
 
 form {
 
@@ -133,3 +141,4 @@ h1{
    
   text-align: center;
 }
+
