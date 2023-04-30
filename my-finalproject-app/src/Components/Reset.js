@@ -1,34 +1,34 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
+// import React from 'react';
+// import Button from 'react-bootstrap/Button';
 
-const Reset = (props) => {
+// const Reset = (props) => {
 
     
 
 
 
 
-return (
-
+// return (
+// <Button className='bsbutton2' variant="success" size="sm" onClick={() => {window.location.reload(true)
+//     }}>Reset</Button>
    
     
-    <Button variant="success" size="sm" onClick={() => {window.location.reload(true)
-    }}>Reset</Button>
+    
     
 
 
 
 
-)
+// )
 
 
-};
+// };
 
 
-//<button onClick={()  => {window.location.reload(true)}}>Reset</button>
+// //<button onClick={()  => {window.location.reload(true)}}>Reset</button>
 
 
 
 
 
-export default Reset
+// export default Reset
