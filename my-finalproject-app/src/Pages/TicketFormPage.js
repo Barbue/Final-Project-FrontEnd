@@ -2,6 +2,9 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FormGroup from 'react-bootstrap/esm/FormGroup';
+import { VscSaveAs } from 'react-icons/vsc';
 
 const TicketFormPage = (props) => {
 
@@ -35,11 +38,11 @@ const TicketFormPage = (props) => {
 		const req =  {
             title: title,
             description: description,
-			relatedTicketIds: relatedTicketIds,
-			assignedToUserId: assignedToUserId,
+			   relatedTicketIds: relatedTicketIds,
+			   assignedToUserId: assignedToUserId,
             creator: creator,
             status: status,
-			comments: comments,
+			   comments: comments,
 			// createdById: createdById,
 			// createdAt: createdAt,
 			// lastModified: lastModified,
@@ -59,70 +62,156 @@ const TicketFormPage = (props) => {
             console.log(error);
           }); 
 
-		 
-    }
-
+	}
 
 return (
 
 <div>
              <br/>
-		     <h1>Ticket Creation Form</h1>
+		     <h1>Ticket Creation Form <VscSaveAs /></h1>
 			 <br/>
-			<label>Title:</label>
-			<input type="text" onChange={(e)=>{
-				setTitle(e.target.value)
-			}} />
 
-			<br/>
-			<br/> 
+		  <Form>
+		  <FormGroup>
+          <Form.Label>Title: </Form.Label>
+          <Form.Control type="text" onChange={(e) => { setTitle(e.target.value) }} />
+          </FormGroup>
+          <br/> 
+          <FormGroup>
+          <Form.Label>Description: </Form.Label>
+          <Form.Control type="text" onChange={(e) => { setDescription(e.target.value) }} as="textarea" rows={3} />
+          </FormGroup>
+          <br/>
+		  <FormGroup>
+          <Form.Label>RelatedTicketIds: </Form.Label>
+          <Form.Control type="text" onChange={(e) => {
+               setRelatedTicketIds(e.target.value);
+             }} as="textarea" rows={3} />
+          </FormGroup>
+          <br/>
+          <FormGroup>
+          <Form.Label>AssignedToUserId: </Form.Label>
+          <Form.Control type="text" onChange={(e) => {
+               setAssignedToUserId(e.target.value);
+             }} as="textarea" rows={3} />
+          </FormGroup>
+          <br/>
+          <FormGroup>
+          <Form.Label>Creator: </Form.Label>
+          <Form.Control type="text" onChange={(e) => { setCreator(e.target.value) }}  />
+          </FormGroup>
+          <br/>
+          <FormGroup>
+          <Form.Label>Status: </Form.Label>
+          <Form.Control type="text" onChange={(e) => {
+                 setStatus(e.target.value);
+               }} />
+          </FormGroup>
+          <br/>
+          <FormGroup>
+          <Form.Label>Comments: </Form.Label>
+          <Form.Control 
+               onChange={(e) => { setComments(e.target.value) }} as="textarea" rows={3} />
+          </FormGroup>
+		  </Form>
+		  <br/>
+<Button variant="success" onClick={() => {handleCreateTicket(); navigate("/")}}>Create Ticket</Button>
+{" "}
+<Button variant="success" onClick={() => {navigate("/")
+          }}>Cancel</Button>
 
-			<label>Description:</label>
-			<textarea type="text" onChange={(e)=>{
-				setDescription(e.target.value)
-			}} />
+</div>
+)
+};
 
-			<br/>
-			<br/>
+export default TicketFormPage
 
-			<label>relatedTicketIds:</label>
-			<textarea type="text" onChange={(e)=>{
-				setRelatedTicketIds(e.target.value)
-			}} />
 
-			<br/>
-			<br/>
 
-			<label>AssignedToUserId:</label>
-			<textarea type="text" onChange={(e)=>{
-				setAssignedToUserId(e.target.value)
-			}} />
 
-			<br/>
-			<br/>
 
-			<label>Creator:</label>
-			<input type="text" onChange={(e)=>{
-				setCreator(e.target.value)
-			}}/>
 
-            <br/>
-			<br/>
-          
-            <label>Status:</label>
-			<input type="text" onChange={(e)=>{
-				setStatus(e.target.value)
-			}}/>
-			
-			<br/>
-			<br/>
 
-			<label>Comments:</label>
-			<textarea type= "text" onChange={(e)=>{
-				setComments(e.target.value)
-			}}/>
 
-			{/* <br/>
+
+
+
+
+
+
+
+{/* <br/>
+<h1>Ticket Creation Form</h1>
+<br/>
+
+
+<label>Title:</label>
+<input type="text" onChange={(e)=>{
+   setTitle(e.target.value)
+}} />
+
+<br/>
+<br/> 
+
+<label>Description:</label>
+<textarea type="text" onChange={(e)=>{
+   setDescription(e.target.value)
+}} />
+
+<br/>
+<br/>
+
+<label>relatedTicketIds:</label>
+<textarea type="text" onChange={(e)=>{
+   setRelatedTicketIds(e.target.value)
+}} />
+
+<br/>
+<br/>
+
+<label>AssignedToUserId:</label>
+<textarea type="text" onChange={(e)=>{
+   setAssignedToUserId(e.target.value)
+}} />
+
+<br/>
+<br/>
+
+<label>Creator:</label>
+<input type="text" onChange={(e)=>{
+   setCreator(e.target.value)
+}}/>
+
+<br/>
+<br/>
+
+<label>Status:</label>
+<input type="text" onChange={(e)=>{
+   setStatus(e.target.value)
+}}/>
+
+<br/>
+<br/>
+
+<label>Comments:</label>
+<textarea type= "text" onChange={(e)=>{
+   setComments(e.target.value)
+}}/>
+
+
+
+
+
+
+<br/>
+<br/> */}
+
+
+
+
+
+
+{/* <br/>
 			<br/>
 
 			  <label>CreatedById:</label>
@@ -152,28 +241,6 @@ return (
 			<textarea type= "text" onChange={(e)=>{
 				setLastUpdatedById(e.target.value)
 			}}/> */}
-            
-		    <br/>
-			<br/>
-			
-
-
-
-<Button variant="success" onClick={() => {handleCreateTicket(); navigate("/")}}>Create Ticket</Button>
-{" "}
-
-<Button variant="success" onClick={() => {navigate("/")
-          }}>Cancel</Button>
-
-
-
-
-
-</div>
-)
-};
-
-export default TicketFormPage
 
 
 
