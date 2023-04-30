@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Hooks/AuthContext";
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FormGroup from 'react-bootstrap/esm/FormGroup';
+import { VscSignIn } from 'react-icons/vsc';
+
 
 export default function Login() {
 	const [email, setEmail] = useState("");
@@ -25,26 +29,21 @@ export default function Login() {
 	return (
 		<div>
 			<br/>
-			<h1>Login Page</h1>
+			<h1>Login Page <VscSignIn /></h1>
 			<br/>
-			<label htmlFor="email">Email: </label>
-			<input
-				type="text"
-				name="email"
-				value={email}
-				onChange={(e) => setEmail(e.target.value)}
-			/>
-			<br />
-			<br />
 			
-			<label htmlFor="password">Password: </label>
-			<input
-				type="text"
-				name="password"
-				value={password}
-				onChange={(e) => setPassword(e.target.value)}
-			/>
-			{" "}
+		  <Form>
+          <FormGroup>
+          <Form.Label htmlFor="email">Email: </Form.Label>
+          <Form.Control type="text" name="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+          </FormGroup>
+          <br/>
+		  <FormGroup>
+          <Form.Label htmlFor="password">Password: </Form.Label>
+          <Form.Control type="text" name="password" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+          </FormGroup>
+		  </Form>
+		  <br/>
 			
 			<Button variant="primary" size="sm" onClick={handleSubmit
           }>Login</Button>
@@ -55,6 +54,40 @@ export default function Login() {
 
 
 
+
+
+
+
+
+// return (
+// 	<div>
+// 		<br/>
+// 		<h1>Login Page</h1>
+// 		<br/>
+// 		<label htmlFor="email">Email: </label>
+// 		<input
+// 			type="text"
+// 			name="email"
+// 			value={email}
+// 			onChange={(e) => setEmail(e.target.value)}
+// 		/>
+// 		<br />
+// 		<br />
+		
+// 		<label htmlFor="password">Password: </label>
+// 		<input
+// 			type="text"
+// 			name="password"
+// 			value={password}
+// 			onChange={(e) => setPassword(e.target.value)}
+// 		/>
+// 		{" "}
+		
+// 		<Button variant="primary" size="sm" onClick={handleSubmit
+// 	  }>Login</Button>
+// 	</div>
+// );
+// }
 
 
 
