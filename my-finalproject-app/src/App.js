@@ -18,6 +18,7 @@ import { title } from 'process';
 import { useNavigate  } from 'react-router-dom';
 import EditTicketForm from './Components/EditTicketForm';
 
+
 const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
 
 function App() {
@@ -66,6 +67,8 @@ function App() {
   // is "5", then the displayed page will include indexes 0-4(tickets 1-5) and end with index 5, which is not included.
   const currentTickets = ticketList.slice(indexOfFirstTicket,indexOfLastTicket);
 
+  
+
   const sortTicketsAsc = () => {
 
   const sortedTicketsAscending = [...ticketList].sort((a, b) => {
@@ -101,7 +104,7 @@ setTicketList(filteredTickets)
   
 return (
     
-<div className="App-header">
+<div className="App-header ">
 
       <NavBar />
 
