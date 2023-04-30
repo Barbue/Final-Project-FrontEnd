@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate, useParams  } from 'react-router-dom';
 import { useAuth } from '../Hooks/AuthContext';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FormGroup from 'react-bootstrap/esm/FormGroup';
 
 function EditTicketForm(props) {
 
@@ -80,89 +82,75 @@ return (
 <div>
           
           <h1> Edit Ticket </h1>
-          
-           <label>Title: </label>
-            <input
-                type="text"
-                value={title}
-                name="title"
-                onChange={(e) => { setTitle(e.target.value) }}
-              />
-              <br/>
-              <br/>
-        
-           {/* <p>Description: {ticket.description}</p> */}
-           <label>Description: </label>
-               <textarea
-                type="text"
-                value={description}
-                name="description"
-                onChange={(e) => { setDescription(e.target.value) }}
-              />
-              <br/>
-              <br/>
 
-           {/* <p>relatedTicketsIds: {ticket.relatedTicketsIds}</p> */}
-           <label>RelatedTicketIds: </label>
-              <textarea
-              type="text"
-              value={relatedTicketIds}
-              name="relatedTicketIds"
-              onChange={(e) => {
-                setRelatedTicketIds(e.target.value);
-              }}
-            />
-            <br/>
-            <br/>
 
-           <label>AssignedToUserId: </label>
-              <input
-              type="text"
-              value={assignedToUserId}
-              name="assignedToUserId"
-              onChange={(e) => {
-                setAssignedToUserId(e.target.value);
-              }}
-            />
-            <br/>
-            <br/>
+          <Form>
+          <FormGroup>
+          <Form.Label>Title: </Form.Label>
+          <Form.Control type="text" value={title} name="title" onChange={(e) => { setTitle(e.target.value) }} />
+          </FormGroup>
+          <br/>
+          <FormGroup>
+          <Form.Label>Description: </Form.Label>
+          <Form.Control type="text"
+               value={description}
+               name="description"
+               onChange={(e) => { setDescription(e.target.value) }} as="textarea" rows={3} />
+          </FormGroup>
+             <br/>
+          <FormGroup>
+          <Form.Label>RelatedTicketIds: </Form.Label>
+          <Form.Control type="text"
+             value={relatedTicketIds}
+             name="relatedTicketIds"
+             onChange={(e) => {
+               setRelatedTicketIds(e.target.value);
+             }} as="textarea" rows={3} />
+          </FormGroup>
+           <br/>
+          <FormGroup>
+          <Form.Label>AssignedToUserId: </Form.Label>
+          <Form.Control type="text" value={assignedToUserId}
+             name="assignedToUserId"
+             onChange={(e) => {
+               setAssignedToUserId(e.target.value);
+             }} as="textarea" rows={3} />
+           </FormGroup>
+           <br/>
+           <FormGroup>
+           <Form.Label>Creator: </Form.Label>
+           <Form.Control type="text" value={creator}
+             name="creator"
+             onChange={(e) => { setCreator(e.target.value) }} placeholder="Normal text" />
+           </FormGroup>
+           <br/>
+           <FormGroup>
+           <Form.Label>Status: </Form.Label>
+           <Form.Control type="text" value={status}
+               name="status"
+               onChange={(e) => {
+                 setStatus(e.target.value);
+               }} placeholder="Normal text" />
+           </FormGroup>
+             <br/>
+           <FormGroup>
+           <Form.Label>Comments: </Form.Label>
+           <Form.Control value={comments}
+               name="comments"
+               onChange={(e) => { setComments(e.target.value) }} as="textarea" rows={3} />
+            </FormGroup>
 
-           {/* <p>Creator: {ticket.creator}</p> */}
-           <label>Creator: </label>
-              <input
-              type="text"
-              value={creator}
-              name="creator"
-              onChange={(e) => { setCreator(e.target.value) }}
-            />
-            <br/>
-            <br/>
-          
-           {/* <p>Status: {ticket.status}</p> */}
-           <label>Status: </label>
-              <input
-                type="text"
-                value={status}
-                name="status"
-                onChange={(e) => {
-                  setStatus(e.target.value);
-                }}
-              />
-              <br/>
-              <br/>
-            
-           {/* <p>Comments: {ticket.comments}</p> */}
-           <label>Comments: </label>
-              <textarea
-                type="text"
-                value={comments}
-                name="comments"
-                onChange={(e) => { setComments(e.target.value) }}
-              />
-              <br/>
-              <br/>
-  
+            {/* <Form.Group controlId="formFileMultiple" className="mb-3">
+        <Form.Label>Multiple files input example</Form.Label>
+        <Form.Control type="file" multiple />
+      </Form.Group> */}
+            </Form>
            
+            
+
+          <br/>
+          
+          
    
             <Button variant="success" onClick={() => {handleUpdateTicket()
           }}>Update Ticket</Button>
@@ -176,6 +164,98 @@ return (
   
 
 export default EditTicketForm
+
+
+
+
+
+
+
+
+
+
+// <label>Title: </label>
+// <input
+//     type="text"
+//     value={title}
+//     name="title"
+//     onChange={(e) => { setTitle(e.target.value) }}
+//   />
+//   <br/>
+//   <br/>
+
+// {/* <p>Description: {ticket.description}</p> */}
+// <label>Description: </label>
+//    <textarea
+//     type="text"
+//     value={description}
+//     name="description"
+//     onChange={(e) => { setDescription(e.target.value) }}
+//   />
+//   <br/>
+//   <br/>
+
+// {/* <p>relatedTicketsIds: {ticket.relatedTicketsIds}</p> */}
+// <label>RelatedTicketIds: </label>
+//   <textarea
+//   type="text"
+//   value={relatedTicketIds}
+//   name="relatedTicketIds"
+//   onChange={(e) => {
+//     setRelatedTicketIds(e.target.value);
+//   }}
+// />
+// <br/>
+// <br/>
+
+// <label>AssignedToUserId: </label>
+//   <input
+//   type="text"
+//   value={assignedToUserId}
+//   name="assignedToUserId"
+//   onChange={(e) => {
+//     setAssignedToUserId(e.target.value);
+//   }}
+// />
+// <br/>
+// <br/>
+
+// {/* <p>Creator: {ticket.creator}</p> */}
+// <label>Creator: </label>
+//   <input
+//   type="text"
+//   value={creator}
+//   name="creator"
+//   onChange={(e) => { setCreator(e.target.value) }}
+// />
+// <br/>
+// <br/>
+
+// {/* <p>Status: {ticket.status}</p> */}
+// <label>Status: </label>
+//   <input
+//     type="text"
+//     value={status}
+//     name="status"
+//     onChange={(e) => {
+//       setStatus(e.target.value);
+//     }}
+//   />
+//   <br/>
+//   <br/>
+
+// {/* <p>Comments: {ticket.comments}</p> */}
+// <label>Comments: </label>
+//   <textarea
+//     type="text"
+//     value={comments}
+//     name="comments"
+//     onChange={(e) => { setComments(e.target.value) }}
+//   />
+//   <br/>
+//   <br/>
+
+
 
 
 
