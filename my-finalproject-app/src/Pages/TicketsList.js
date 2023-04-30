@@ -6,6 +6,7 @@
 import TicketCard from "../Components/TicketCard";
 import SearchBar from '../Components/SearchBar';
 import Sorting from "../Components/Sorting";
+import { BsFillTicketDetailedFill} from "react-icons/bs";
 
 
 //home page component 
@@ -26,17 +27,26 @@ const {
 
 return (
 
-<div>
-            
+<div className="ticketList">       
          <br/>
-            <SearchBar filterTickets={filterTickets} ticketList={ticketList}/>
+         
+         
 
-            <br/>
+
+
+            <SearchBar filterTickets={filterTickets} ticketList={ticketList}  setShouldRefresh={setShouldRefresh}/>
+
             
-            <h1> Tickets </h1>
+            
+            <h1 className="ticketsTitle"> Tickets <BsFillTicketDetailedFill /> </h1>
+            
             <br/>
+            <div className="sorting">
             <Sorting sortTicketsDsc={sortTicketsDsc} sortTicketsAsc={sortTicketsAsc} />
-            <br/>
+            </div>
+            
+            
+
             
             {ticketList.map((item, index) => {
             
