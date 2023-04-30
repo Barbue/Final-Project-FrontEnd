@@ -6,6 +6,9 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import QuickEdit from './Modal';
+//import CardGroup from 'react-bootstrap/CardGroup';
+import { BsFillTicketDetailedFill} from "react-icons/bs";
+
 
 
 const TicketCard = (props) => {
@@ -33,12 +36,12 @@ const TicketCard = (props) => {
 
 return (
 
-  <>
+  <div className='ticketCard'>
       {[
         'Dark',
         
       ].map((variant) => (
-        // <CardGroup>
+        //<CardGroup>
         <Row xs={1} md={2} className="g-4">
          
         {Array.from({ length: 1 }).map((_, idx) => (
@@ -51,12 +54,12 @@ return (
           className="mb-2"
           
         >
-          <Card.Header>Ticket</Card.Header>
+          <Card.Header>Ticket <BsFillTicketDetailedFill /></Card.Header>
           <Card.Body>
 
           <QuickEdit  ticket={ticket} ticketList={ticketList} setShouldRefresh={setShouldRefresh} urlEndPoint={urlEndPoint} />
           <br/>
-          <br/>
+          
       <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}>  Description: </Card.Subtitle>
       <Card.Text> <small>  {ticket.description}  </small> </Card.Text>
 
@@ -104,9 +107,9 @@ return (
         </Col>
       ))}
     </Row>
-    // </CardGroup>
+    //</CardGroup>
       ))}
-    </>
+    </div>
 
 
 );
