@@ -54,11 +54,11 @@ return (
           className="mb-2"
           
         >
-          <Card.Header>Ticket <BsFillTicketDetailedFill /></Card.Header>
-          <Card.Body>
+      <Card.Header>Ticket <BsFillTicketDetailedFill /></Card.Header>
+      <Card.Body>
 
-          <QuickEdit  ticket={ticket} ticketList={ticketList} setShouldRefresh={setShouldRefresh} urlEndPoint={urlEndPoint} />
-          <br/>
+      <QuickEdit  ticket={ticket} ticketList={ticketList} setShouldRefresh={setShouldRefresh} urlEndPoint={urlEndPoint} />
+      <br/>
           
       <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}>  Description: </Card.Subtitle>
       <Card.Text> <small>  {ticket.description}  </small> </Card.Text>
@@ -69,8 +69,8 @@ return (
       <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}> AssignedToUserId: </Card.Subtitle>
       <Card.Text> <small> {ticket.assignedToUserId} </small> </Card.Text>
 
-      <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}> Creator: </Card.Subtitle>
-      <Card.Text> <small> {ticket.creator} </small> </Card.Text>
+      <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}> Created By: </Card.Subtitle>
+      <Card.Text> <small> {ticket.createdBy} </small> </Card.Text>
 
       <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}> Status: </Card.Subtitle>
       <Card.Text> <small>  {ticket.status} </small> </Card.Text>
@@ -78,8 +78,8 @@ return (
       <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}> Comments: </Card.Subtitle>
       <Card.Text> <small>  {ticket.comments} </small> </Card.Text>
 
-      <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}> CreatedAt: </Card.Subtitle>
-      <Card.Text> <small>  {ticket.createdAt} </small> </Card.Text>
+      <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}> Organization: </Card.Subtitle>
+      <Card.Text> <small>  {ticket.organization} </small> </Card.Text>
 
       <Card.Subtitle style={{fontSize: "25px", fontWeight: 1000}}> CreatedById: </Card.Subtitle>
       <Card.Text> <small>  {ticket.createdById} </small> </Card.Text>
