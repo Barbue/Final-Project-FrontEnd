@@ -30,6 +30,7 @@ function App() {
   const [ticketsPerPage] = useState(3);
   //, setTicketsPerPage
   const navigate = useNavigate
+  
 
 
   //console.log(ticketList)
@@ -52,6 +53,8 @@ function App() {
     // });
   
   },[shouldRefresh])
+
+  
 
  
   // Pagination 
@@ -126,7 +129,7 @@ return (
           setShouldRefresh={setShouldRefresh}
           sortTicketsDsc={sortTicketsDsc} 
           sortTicketsAsc={sortTicketsAsc}
-        />
+         />
 
           <Pagination 
            totalTickets={ticketList.length} 
@@ -215,16 +218,16 @@ export default App;
   
 // }
 
-{/* <Route
-						path="edit-ticket/:id"
-						element={
-							<EditTicketForm
-              urlEndPoint={urlEndPoint}
-								ticketList={ticketList}
-								setShouldRefresh={setShouldRefresh}
-							/>
-						}
-					/> */}
+// <Route
+// 						path="edit-ticket/:id"
+// 						element={
+// 							<EditTicketForm
+//               urlEndPoint={urlEndPoint}
+// 								ticketList={ticketList}
+// 								setShouldRefresh={setShouldRefresh}
+// 							/>
+// 						}
+// 					/> 
 
 
 

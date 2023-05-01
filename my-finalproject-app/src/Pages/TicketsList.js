@@ -21,6 +21,7 @@ const {
         filterTickets,
         sortTicketsDsc,
         sortTicketsAsc,
+        
       } = props
     
     console.log(ticketList)
@@ -34,7 +35,8 @@ return (
 
 
 
-            <SearchBar filterTickets={filterTickets} ticketList={ticketList}  setShouldRefresh={setShouldRefresh}/>
+            <SearchBar filterTickets={filterTickets} ticketList={ticketList} setTicketList={setTicketList}  setShouldRefresh={setShouldRefresh}
+             />
 
             
             
