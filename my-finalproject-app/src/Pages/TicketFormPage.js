@@ -18,13 +18,14 @@ const TicketFormPage = (props) => {
 	const [description, setDescription] = useState("")
 	const [relatedTicketIds, setRelatedTicketIds] = useState([])
 	const [assignedToUserId, setAssignedToUserId] = useState("")
-	const [creator, setCreator] = useState("")
+	const [createdBy, setCreatedBy] = useState("")
     const [comments, setComments] = useState("")
     const [status, setStatus] = useState("")
 	//const [createdById, setCreatedById] = useState("")
     const [createdAt, setCreatedAt] = useState("")
     const [lastModified, setLastModified] = useState("")
     //const [lastUpdatedById, setLastUpdatedById] = useState("")
+    const [organization, setOrganization] = useState("");
     
 
 	
@@ -40,9 +41,10 @@ const TicketFormPage = (props) => {
             description: description,
 			   relatedTicketIds: relatedTicketIds,
 			   assignedToUserId: assignedToUserId,
-            creator: creator,
+            createdBy: createdBy,
             status: status,
-			   comments: comments,
+            organization: organization,
+            comments: comments,
 			// createdById: createdById,
 			// createdAt: createdAt,
 			// lastModified: lastModified,
@@ -97,24 +99,40 @@ return (
           </FormGroup>
           <br/>
           <FormGroup>
-          <Form.Label>Creator: </Form.Label>
-          <Form.Control type="text" onChange={(e) => { setCreator(e.target.value) }}  />
+          <Form.Label>Created By: </Form.Label>
+          <Form.Control type="text" onChange={(e) => { setCreatedBy(e.target.value) }}  />
           </FormGroup>
           <br/>
           <FormGroup>
           <Form.Label>Status: </Form.Label>
-          <Form.Control type="text" onChange={(e) => {
-                 setStatus(e.target.value);
-               }} />
-          </FormGroup>
+          <Form.Select  onChange={(e) => { setStatus(e.target.value) }}>
+          <option selected disabled>Select Status</option>
+          <option value="Open-Unassigned">Open-Unassigned</option>
+          <option value="Open-Assigned-In-Progress">Open-Assigned-In-Progress</option>
+          <option value="Open-Assigned-Testing">Open-Assigned-Testing</option>
+          <option value="Open-Assigned-Done">Open-Assigned-Done</option>
+          <option value="Closed">Closed</option>
+          </Form.Select>
+          </FormGroup> 
+          <br/>
+          <FormGroup>
+          <Form.Label>Organization: </Form.Label>
+          <Form.Select  onChange={(e) => { setOrganization(e.target.value) }}>
+          <option selected disabled>Select Organization</option>
+          <option value="DevOps">DevOps</option>
+          <option value="IT/Engineering">IT/Engineering</option>
+          <option value="Project Management">Project Management</option>
+          <option value="Quality Assurance">Quality Assurance</option>
+          <option value="Human Resources">Human Resources</option>
+          </Form.Select>
+          </FormGroup> 
           <br/>
           <FormGroup>
           <Form.Label>Comments: </Form.Label>
-          <Form.Control 
-               onChange={(e) => { setComments(e.target.value) }} as="textarea" rows={3} />
+          <Form.Control onChange={(e) => { setComments(e.target.value) }} as="textarea" rows={3} />
           </FormGroup>
-		  </Form>
-		  <br/>
+		    </Form>
+		    <br/>
 <Button variant="success" onClick={() => {handleCreateTicket(); navigate("/")}}>Create Ticket</Button>
 {" "}
 <Button variant="success" onClick={() => {navigate("/")
@@ -135,13 +153,20 @@ export default TicketFormPage
 
 
 
+/* <FormGroup>
+          <Form.Label>Status: </Form.Label>
+          <Form.Control type="text" onChange={(e) => {
+                 setStatus(e.target.value);
+               }} />
+          </FormGroup> */
 
 
 
+ //name="organization" id="organization"
+ // <Form.Control as="select" name="organization" onChange={(e) => { setOrganization(e.target.value) }}  />  */}
 
-
-{/* <br/>
-<h1>Ticket Creation Form</h1>
+// <br/>
+/* <h1>Ticket Creation Form</h1>
 <br/>
 
 
@@ -204,43 +229,43 @@ export default TicketFormPage
 
 
 <br/>
-<br/> */}
+<br/> */
+
+ 
 
 
 
 
-
-
-{/* <br/>
+/* <br/>
 			<br/>
 
 			  <label>CreatedById:</label>
 			<textarea type= "text" onChange={(e)=>{
 				setCreatedById(e.target.value)
-			}}/> */}
+			}}/> */
 
-			{/* <br/>
+			/* <br/>
 			<br/>
 
 
 			  <label>CreatedAt:</label>
 			<input type= "date" onChange={(e)=>{
 				setCreatedAt(e.target.value)
-			}}/> */}
-			{/* <br/>
+			}}/> */
+			/* <br/>
 			<br/>
 
 			  <label>LastModified:</label>
 			<input type= "date" onChange={(e)=>{
 				setLastModified(e.target.value)
-			}}/> */}
-			{/* <br/>
+			}}/> */
+			/* <br/>
 			<br/>
 
 			<label>LastUpdatedById:</label>
 			<textarea type= "text" onChange={(e)=>{
 				setLastUpdatedById(e.target.value)
-			}}/> */}
+			}}/> */
 
 
 
