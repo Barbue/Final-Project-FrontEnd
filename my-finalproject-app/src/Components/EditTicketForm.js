@@ -16,9 +16,10 @@ function EditTicketForm(props) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [relatedTicketIds, setRelatedTicketIds] = useState(""); //[]
-    const [creator, setCreator] = useState("");
+    const [createdBy, setCreatedBy] = useState("");
     const [comments, setComments] = useState("");
     const [status, setStatus] = useState("");
+    const [organization, setOrganization] = useState("")
     // const [createdById, setCreatedById] = useState("")
     // const [createdAt, setCreatedAt] = useState("")
     const [assignedToUserId, setAssignedToUserId] = useState("")
@@ -39,8 +40,9 @@ function EditTicketForm(props) {
         setDescription(foundTicket.description);
         setRelatedTicketIds(foundTicket.relatedTicketIds);
         setAssignedToUserId(foundTicket.assignedToUserId);
-        setCreator(foundTicket.creator);
+        setCreatedBy(foundTicket.createdBy);
         setStatus(foundTicket.status);
+        setOrganization(foundTicket.organization);
         setComments(foundTicket.comments);
         // setCreatedById(foundTicket.createdById);
         // setCreatedAt(foundTicket.createdAt);
@@ -58,8 +60,9 @@ const handleUpdateTicket = () => {
           description: description,
           relatedTicketIds: relatedTicketIds,
           assignedToUserId: assignedToUserId,
-          creator: creator,
+          createdBy: createdBy,
           status: status,
+          organization: organization,
           comments: comments,
           lastModified: new Date(),
           lastUpdatedById: userId,
@@ -115,30 +118,45 @@ return (
              onChange={(e) => {
                setAssignedToUserId(e.target.value);
              }} as="textarea" rows={3} />
-           </FormGroup>
-           <br/>
-           <FormGroup>
-           <Form.Label>Creator: </Form.Label>
-           <Form.Control type="text" value={creator}
-             name="creator"
-             onChange={(e) => { setCreator(e.target.value) }} placeholder="Normal text" />
-           </FormGroup>
-           <br/>
-           <FormGroup>
+          </FormGroup>
+          <br/>
+          <FormGroup>
+          <Form.Label>Created By: </Form.Label>
+          <Form.Control type="text" value={createdBy}
+             name="createdBy"
+             onChange={(e) => { setCreatedBy(e.target.value) }} placeholder="Normal text" />
+          </FormGroup>
+          <br/>
+          <FormGroup>
            <Form.Label>Status: </Form.Label>
-           <Form.Control type="text" value={status}
-               name="status"
-               onChange={(e) => {
-                 setStatus(e.target.value);
-               }} placeholder="Normal text" />
-           </FormGroup>
+           <Form.Select  onChange={(e) => { setStatus(e.target.value) }}>
+           <option selected disabled>Select Status</option>
+           <option value="Open-Unassigned">Open-Unassigned</option>
+           <option value="Open-Assigned-In-Progress">Open-Assigned-In-Progress</option>
+           <option value="Open-Assigned-Testing">Open-Assigned-Testing</option>
+           <option value="Open-Assigned-Done">Open-Assigned-Done</option>
+           <option value="Closed">Closed</option>
+           </Form.Select>
+           </FormGroup> 
+           <br/>
+          <FormGroup>
+          <Form.Label>Organization: </Form.Label>
+          <Form.Select  onChange={(e) => { setOrganization(e.target.value) }}>
+           <option selected disabled>Select Organization</option>
+           <option value="DevOps">DevOps</option>
+           <option value="IT/Engineering">IT/Engineering</option>
+           <option value="Project Management">Project Management</option>
+           <option value="Quality Assurance">Quality Assurance</option>
+           <option value="Human Resources">Human Resources</option>
+          </Form.Select>
+          </FormGroup> 
              <br/>
-           <FormGroup>
-           <Form.Label>Comments: </Form.Label>
-           <Form.Control value={comments}
+          <FormGroup>
+          <Form.Label>Comments: </Form.Label>
+          <Form.Control value={comments}
                name="comments"
                onChange={(e) => { setComments(e.target.value) }} as="textarea" rows={3} />
-            </FormGroup>
+          </FormGroup>
 
             {/* <Form.Group controlId="formFileMultiple" className="mb-3">
         <Form.Label>Multiple files input example</Form.Label>
@@ -171,6 +189,16 @@ export default EditTicketForm
 
 
 
+
+
+/* <FormGroup>
+          <Form.Label>Status: </Form.Label>
+          <Form.Control type="text" value={status}
+               name="status"
+               onChange={(e) => {
+                 setStatus(e.target.value);
+               }} placeholder="Normal text" />
+          </FormGroup> */
 
 
 
