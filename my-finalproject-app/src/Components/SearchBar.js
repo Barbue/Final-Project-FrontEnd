@@ -17,6 +17,8 @@ function SearchBar(props){
 
     const {
         ticketList,
+        setTicketList,
+       
         
     } = props
 
@@ -27,16 +29,18 @@ function SearchBar(props){
         //show filtered results, call to function in App.js 
         props.filterTickets(input, field);
 
-        // setField("")
-        // setInput("")
-      
-    } 
+} 
 
    
 
     // const handleReset = () => {
-        
+
+    //     setInput("");
+    //     setField("");
        
+       
+      
+    
     // } 
 
     return (
@@ -60,11 +64,11 @@ function SearchBar(props){
             /> 
             <Form.Check
             inline
-            label="Creator"
+            label="Created By"
             id="custom-switch"
             type="switch"
-            value="creator"
-            checked={field === "creator"}
+            value="createdBy"
+            checked={field === "createdBy"}
             onChange={e => setField(e.target.value)}
             /> 
             
@@ -82,7 +86,7 @@ function SearchBar(props){
         </Button> {"  "}
         <Button className='bsbutton2' variant="success" size="sm" onClick={() => {window.location.reload(true)}}>Reset</Button>
             
-        {/* //<Reset /> */}
+       
 
         </Form> 
         <br/>
