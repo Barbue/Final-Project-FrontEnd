@@ -21,10 +21,11 @@ const {ticketList, urlEndPoint, setShouldRefresh, ticket,  } = props;
     const [title, setTitle] = useState(ticket.title); 
     const [description, setDescription] = useState(ticket.description); 
     const [relatedTicketIds, setRelatedTicketIds] = useState(ticket.relatedTicketIds); 
-    const [creator, setCreator] = useState(ticket.creator); 
+    const [createdBy, setCreatedBy] = useState(ticket.createdBy); 
     const [comments, setComments] = useState(ticket.comments); 
     const [status, setStatus] = useState(ticket.status); 
     const [assignedToUserId, setAssignedToUserId] = useState(ticket.assignedToUserId) 
+    const [organization, setOrganization] = useState(ticket.organization);
     
     const navigate = useNavigate();
     
@@ -36,8 +37,9 @@ const handleUpdateTicket1 = () => {
           description: description,
           relatedTicketIds: relatedTicketIds,
           assignedToUserId: assignedToUserId,
-          creator: creator,
+          createdBy: createdBy,
           status: status,
+          organization: organization,
           comments: comments,
           lastModified: new Date(),
           lastUpdatedById: userId,
@@ -116,21 +118,36 @@ const handleUpdateTicket1 = () => {
            </FormGroup>
            <br/>
            <FormGroup>
-           <Form.Label>Creator: </Form.Label>
-           <Form.Control type="text" value={creator}
-             name="creator"
-             onChange={(e) => { setCreator(e.target.value) }} placeholder="Normal text" />
+           <Form.Label>Created By: </Form.Label>
+           <Form.Control type="text" value={createdBy}
+             name="createdBy"
+             onChange={(e) => { setCreatedBy(e.target.value) }} placeholder="Normal text" />
            </FormGroup>
            <br/>
            <FormGroup>
            <Form.Label>Status: </Form.Label>
-           <Form.Control type="text" value={status}
-               name="status"
-               onChange={(e) => {
-                 setStatus(e.target.value);
-               }} placeholder="Normal text" />
-           </FormGroup>
-             <br/>
+           <Form.Select  onChange={(e) => { setStatus(e.target.value) }}>
+           <option selected disabled>Select Status</option>
+           <option value="Open-Unassigned">Open-Unassigned</option>
+           <option value="Open-Assigned-In-Progress">Open-Assigned-In-Progress</option>
+           <option value="Open-Assigned-Testing">Open-Assigned-Testing</option>
+           <option value="Open-Assigned-Done">Open-Assigned-Done</option>
+           <option value="Closed">Closed</option>
+           </Form.Select>
+           </FormGroup> 
+           <br/>
+           <FormGroup>
+           <Form.Label>Organization: </Form.Label>
+           <Form.Select  onChange={(e) => { setOrganization(e.target.value) }}>
+           <option selected disabled>Select Organization</option>
+           <option value="DevOps">DevOps</option>
+           <option value="IT/Engineering">IT/Engineering</option>
+           <option value="Project Management">Project Management</option>
+           <option value="Quality Assurance">Quality Assurance</option>
+           <option value="Human Resources">Human Resources</option>
+           </Form.Select>
+           </FormGroup> 
+           <br/>
            <FormGroup>
            <Form.Label>Comments: </Form.Label>
            <Form.Control value={comments}
@@ -170,7 +187,19 @@ export default QuickEdit
 
 
 
-{/* <h1> Edit Ticket </h1>
+
+
+/* <FormGroup>
+           <Form.Label>Status: </Form.Label>
+           <Form.Control type="text" value={status}
+               name="status"
+               onChange={(e) => {
+                 setStatus(e.target.value);
+               }} placeholder="Normal text" />
+           </FormGroup> */
+
+
+/* <h1> Edit Ticket </h1>
           
 <label>Title: </label>
  <input
@@ -258,7 +287,7 @@ export default QuickEdit
  
  
   <br/>
-  <br/>  */}
+  <br/>  */
 
 
 
