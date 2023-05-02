@@ -24,7 +24,6 @@ const Pagination = ({totalTickets, ticketsPerPage, setCurrentPage}) => {
            }) 
         }
 
-
     </div>
   )
 }
