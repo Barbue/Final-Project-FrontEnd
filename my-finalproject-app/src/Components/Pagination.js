@@ -2,9 +2,12 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 
 
-const Pagination = ({totalTickets, ticketsPerPage, setCurrentPage}) => {
+                     // deconstructed props
+const Pagination = ({totalTickets, ticketsPerPage, setCurrentPage, currentPage}) => {
     let pages = [];
+    
      
+                        // ensures that page is created for tickets that do not fill the tickets per page number
     for(let i = 1; i <= Math.ceil(totalTickets / ticketsPerPage); i++)
     {
      pages.push(i)
@@ -16,12 +19,9 @@ const Pagination = ({totalTickets, ticketsPerPage, setCurrentPage}) => {
         {
            pages.map((page, i) => {
 
-           return <Button className="pages1" variant="success"  key={i} onClick={() => {setCurrentPage(page)
-           }}>{page}</Button> 
+           return <Button className="pages1" variant="success"  key={i} onClick={() => { setCurrentPage(page) } }>{page}</Button> 
 
-           
-
-           }) 
+          }) 
         }
 
     </div>
