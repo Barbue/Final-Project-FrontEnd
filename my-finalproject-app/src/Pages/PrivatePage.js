@@ -5,7 +5,7 @@ export default function PrivatePage() {
 	const { isVerified } = useAuth();
 
 	return (
-		<div>{isVerified ? <Outlet /> : <div> Please Login to see Tickets</div>}</div>
+		<div>{isVerified ? <Outlet /> : <div> Please Register/Login to see Tickets</div>}</div>
 	);
 }
 
