@@ -1,51 +1,46 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Reset from "../Components/Reset";
+//import { useNavigate } from "react-router-dom";
+//import Reset from "../Components/Reset";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormGroup from 'react-bootstrap/esm/FormGroup';
 import { VscSearch } from "react-icons/vsc";
-
-
 
 function SearchBar(props){
 
     // setting up the state 
     const [input, setInput] = useState("");
     const [field, setField] = useState("");
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const {
         ticketList,
         setTicketList,
-       
-        
     } = props
 
+    
     const handleOnSubmit = e => {
         e.preventDefault();
         
        
         //show filtered results, call to function in App.js 
         props.filterTickets(input, field);
-
 } 
 
-   
+const handleReset = () => {
 
-    // const handleReset = () => {
+    setField("")
+    setInput("")
 
-    //     setInput("");
-    //     setField("");
-       
-       
-      
-    
-    // } 
+    props.filterTickets("","")
 
-    return (
 
-         <>
+
+}
+
+return (
+
+    <>
          
          
         <Form onSubmit={handleOnSubmit}> 
@@ -84,19 +79,12 @@ function SearchBar(props){
         <Button   variant="primary" size="sm" type="submit">
             Search
         </Button> {"  "}
-        <Button className='bsbutton2' variant="success" size="sm" onClick={() => {window.location.reload(true)}}>Reset</Button>
-            
        
-
+         <Button className='bsbutton2' variant="success" size="sm" onClick={handleReset}>Reset</Button>  
         </Form> 
         <br/>
-        
-        </> 
-       
-    );
-
-    
-        
+    </> 
+  );
 }
 
 export default SearchBar;
@@ -104,6 +92,8 @@ export default SearchBar;
 
 
 
+            
+       
 
 
 
@@ -114,7 +104,7 @@ export default SearchBar;
 //{window.location.reload(true)
 
 
-{/* <Form.Check
+/* <Form.Check
             inline
             label="CreatedById"
             id="custom-switch"
@@ -122,13 +112,13 @@ export default SearchBar;
             value="createdById"
             checked={field === "createdById"}
             onChange={e => setField(e.target.value)}
-            />  */}
+            />  */
 
 
 
 
-{/* </div>  */}
-            {/* <Form.Check
+/* </div>  */
+            /* <Form.Check
             inline
             label="Description"
             id="custom-switch"
@@ -136,7 +126,7 @@ export default SearchBar;
             value="description"
             checked={field === "descr"}
             onChange={e => setField(e.target.value)}
-            />  */}
+            />  */
 
 
  /* <form onSubmit={handleOnSubmit} > */
