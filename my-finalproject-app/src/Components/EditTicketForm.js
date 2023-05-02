@@ -20,11 +20,8 @@ function EditTicketForm(props) {
     const [comments, setComments] = useState("");
     const [status, setStatus] = useState("");
     const [organization, setOrganization] = useState("")
-    // const [createdById, setCreatedById] = useState("")
-    // const [createdAt, setCreatedAt] = useState("")
     const [assignedToUserId, setAssignedToUserId] = useState("")
-    // const [lastModified, setLastModified] = useState("")
-    // const [lastUpdatedById, setLastUpdatedById] = useState("")
+    
     const navigate = useNavigate();
     const { id } = useParams();
     console.log(useParams())
@@ -44,11 +41,7 @@ function EditTicketForm(props) {
         setStatus(foundTicket.status);
         setOrganization(foundTicket.organization);
         setComments(foundTicket.comments);
-        // setCreatedById(foundTicket.createdById);
-        // setCreatedAt(foundTicket.createdAt);
-        // setLastModified(foundTicket.lastModified);
-        // setLastUpdatedById(foundTicket.lastUpdatedById);
-
+        
 }, [id, ticketList]);
 
 
@@ -163,24 +156,17 @@ return (
         <Form.Control type="file" multiple />
       </Form.Group> */}
             </Form>
-           
-            
-
-          <br/>
+            <br/>
           
-          
-   
-            <Button variant="success" onClick={() => {handleUpdateTicket()
+          <Button variant="success" onClick={() => {handleUpdateTicket()
           }}>Update Ticket</Button>
             
              <br/>
              <br/>
-
 </div>
 );
 }
   
-
 export default EditTicketForm
 
 
@@ -189,6 +175,31 @@ export default EditTicketForm
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// setCreatedById(foundTicket.createdById);
+        // setCreatedAt(foundTicket.createdAt);
+        // setLastModified(foundTicket.lastModified);
+        // setLastUpdatedById(foundTicket.lastUpdatedById);
+
+
+// const [lastModified, setLastModified] = useState("")
+    // const [lastUpdatedById, setLastUpdatedById] = useState("")
+
+// const [createdById, setCreatedById] = useState("")
+    // const [createdAt, setCreatedAt] = useState("")
 
 
 /* <FormGroup>
@@ -311,47 +322,47 @@ export default EditTicketForm
 
 
 
-{/* <p>Status: {ticket.createdById}</p> */}
-           {/* <label>createdById: </label>
+/* <p>Status: {ticket.createdById}</p> */
+           /* <label>createdById: </label>
               <input
                 type="text"
                 value={createdById}
                 name="createdById"
                 onChange={(e) => { setCreatedById(e.target.value) }}
-              /> */}
-              {/* <br/>
-              <br/> */}
+              /> */
+              /* <br/>
+              <br/> */
             
-           {/* <p>Status: {ticket.createdAt}</p> */}
-           {/* <label>createdAt: </label>
+           /* <p>Status: {ticket.createdAt}</p> */
+           /* <label>createdAt: </label>
               <input
                 type="datetime-local"
                 value={createdAt}
                 name="createdAt"
                 onChange={(e) => { setCreatedAt(e.target.value) }}
-              /> */}
-              {/* <br/>
-              <br/> */}
+              /> */
+              /* <br/>
+              <br/> */
 
-            {/* <label>lastModified: </label>
+            /* <label>lastModified: </label>
               <input
                 type="datetime-local"
                 value={lastModified}
                 name="lastModified"
                 onChange={(e) => { setLastModified(e.target.value) }}
-              /> */}
-              {/* <br/>
-              <br/> */}
+              /> */
+              /* <br/>
+              <br/> */
 
-            {/* <label>lastUpdatedById: </label>
+            /* <label>lastUpdatedById: </label>
               <input
                 type="text"
                 value={lastUpdatedById}
                 name="lastUpdatedById"
                 onChange={(e) => { setLastUpdatedById(e.target.value) }}
-              /> */}
-              {/* <br/>
-              <br/> */}
+              /> */
+              /* <br/>
+              <br/> */
              
 
 
