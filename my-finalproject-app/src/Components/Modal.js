@@ -73,14 +73,11 @@ const handleUpdateTicket1 = () => {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
-        
-        >
+      >
         <Modal.Header  closeButton>
-          <Modal.Title>Quick Edit</Modal.Title>
+        <Modal.Title>Quick Edit</Modal.Title>
         </Modal.Header>
         <Modal.Body >
-          
-
           
         <h1> Edit Ticket </h1>
           
@@ -107,7 +104,7 @@ const handleUpdateTicket1 = () => {
                setRelatedTicketIds(e.target.value);
              }} as="textarea" rows={3} />
           </FormGroup>
-           <br/>
+          <br/>
           <FormGroup>
           <Form.Label>AssignedToUserId: </Form.Label>
           <Form.Control type="text" value={assignedToUserId}
@@ -159,11 +156,8 @@ const handleUpdateTicket1 = () => {
         <Form.Label>Multiple files input example</Form.Label>
         <Form.Control type="file" multiple />
       </Form.Group> */}
-            </Form>
-           
-            
-             
- 
+           </Form>
+       
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
