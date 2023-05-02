@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../Hooks/AuthContext";
 import { removeUserToken } from "../Hooks/authLocalStorage";
 import { useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { VscSignIn, VscSignOut, VscSaveAs } from 'react-icons/vsc';
 import { FcHome } from "react-icons/fc";
@@ -29,7 +29,7 @@ return (
            {isVerified && <Link className="link2" to="/ticketform"> Create Ticket <VscSaveAs /> </Link> }
            {" "}
 
-         {isVerified && <Link className="link3" to="/registration"> Register <FaUserEdit/> </Link>}
+          <Link className="link3" to="/registration"> Register <FaUserEdit /> </Link>
 
           <Link className="link4" to="/login"> Login < VscSignIn /></Link> 
           {""}
@@ -37,15 +37,9 @@ return (
          {isVerified && <Card.Link  style={{color: 'green', fontFamily:'Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif', fontWeight:1000
         }}variant="primary" size="sm" onClick={handleLogout}>Logout <VscSignOut /></Card.Link>}
 
-         
-          </nav> 
-       
-    // </div>
+        </nav> 
     )
  }
-
-
-
 
 export default NavBar;
 
@@ -64,7 +58,7 @@ export default NavBar;
 
 //<button onClick={handleLogout}>Logout</button>
 
-
+// {isVerified && <Link className="link3" to="/registration"> Register <FaUserEdit/> </Link>}
 
 
 
