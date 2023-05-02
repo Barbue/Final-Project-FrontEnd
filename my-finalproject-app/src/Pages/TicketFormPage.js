@@ -96,10 +96,10 @@ return (
           <Form.Label>Status: </Form.Label>
           <Form.Select  onChange={(e) => { setStatus(e.target.value) }}>
           <option selected disabled>Select Status</option>
-          <option value="Open-Unassigned">Open-Unassigned</option>
-          <option value="Open-Assigned-In-Progress">Open-Assigned-In-Progress</option>
-          <option value="Open-Assigned-Testing">Open-Assigned-Testing</option>
-          <option value="Open-Assigned-Done">Open-Assigned-Done</option>
+          <option value="Unassigned">Unassigned</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Testing">Testing</option>
+          <option value="Done">Done</option>
           <option value="Closed">Closed</option>
           </Form.Select>
           </FormGroup> 
