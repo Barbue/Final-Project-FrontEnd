@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+//import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 
 
@@ -23,7 +23,7 @@ return (
 
   </div>
 
-      )
+  )
 };
 
 export default Sorting
@@ -51,7 +51,7 @@ export default Sorting
 
 
 
-{/* //() => {sortedTicketsDescending } */}
+/* //() => {sortedTicketsDescending } */
 
 
 // if (a.title.toUpperCase() < b.title.toUpperCase()) {
