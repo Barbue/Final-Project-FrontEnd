@@ -13,18 +13,15 @@ function SearchBar(props){
     const [field, setField] = useState("");
     //const navigate = useNavigate();
 
-    const {
-        ticketList,
-        setTicketList,
-    } = props
+    
 
     
     const handleOnSubmit = e => {
         e.preventDefault();
         
-       
         //show filtered results, call to function in App.js 
         props.filterTickets(input, field);
+        
 } 
 
 const handleReset = () => {
@@ -98,7 +95,10 @@ export default SearchBar;
 
 
 
-
+// const {
+    //     ticketList,
+    //     setTicketList,
+    // } = props
 
 
 //{window.location.reload(true)
