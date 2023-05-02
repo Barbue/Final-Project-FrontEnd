@@ -7,6 +7,7 @@ import TicketCard from "../Components/TicketCard";
 import SearchBar from '../Components/SearchBar';
 import Sorting from "../Components/Sorting";
 import { BsFillTicketDetailedFill} from "react-icons/bs";
+//import Reset from "../Components/Reset";
 
 
 //home page component 
@@ -22,7 +23,7 @@ const {
         sortTicketsDsc,
         sortTicketsAsc,
         
-      } = props
+    } = props
     
     console.log(ticketList)
 
@@ -31,21 +32,17 @@ return (
 <div className="ticketList">       
          <br/>
          
+         <SearchBar filterTickets={filterTickets} ticketList={ticketList} setTicketList={setTicketList}  setShouldRefresh={setShouldRefresh}  
+         />
          
-
-
-
-            <SearchBar filterTickets={filterTickets} ticketList={ticketList} setTicketList={setTicketList}  setShouldRefresh={setShouldRefresh}
-             />
-
             
+        <h1 className="ticketsTitle"> Tickets <BsFillTicketDetailedFill /> </h1>
             
-            <h1 className="ticketsTitle"> Tickets <BsFillTicketDetailedFill /> </h1>
+        <br/>
             
-            <br/>
-            <div className="sorting">
-            <Sorting sortTicketsDsc={sortTicketsDsc} sortTicketsAsc={sortTicketsAsc} />
-            </div>
+        <div className="sorting">
+        <Sorting sortTicketsDsc={sortTicketsDsc} sortTicketsAsc={sortTicketsAsc} />
+        </div>
             
             
 

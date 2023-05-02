@@ -12,25 +12,18 @@ const TicketFormPage = (props) => {
 	//instantiate navigator 
 	const navigate = useNavigate();
 	
-
-	const { setShouldRefresh, urlEndPoint } = props;
-    const [title, setTitle] = useState("")
+   const { setShouldRefresh, urlEndPoint } = props;
+   const [title, setTitle] = useState("")
 	const [description, setDescription] = useState("")
 	const [relatedTicketIds, setRelatedTicketIds] = useState([])
 	const [assignedToUserId, setAssignedToUserId] = useState("")
 	const [createdBy, setCreatedBy] = useState("")
-    const [comments, setComments] = useState("")
-    const [status, setStatus] = useState("")
-	//const [createdById, setCreatedById] = useState("")
-    const [createdAt, setCreatedAt] = useState("")
-    const [lastModified, setLastModified] = useState("")
-    //const [lastUpdatedById, setLastUpdatedById] = useState("")
-    const [organization, setOrganization] = useState("");
+   const [comments, setComments] = useState("")
+   const [status, setStatus] = useState("")
+   const [organization, setOrganization] = useState("");
     
 
-	
-
-    const handleCreateTicket = async () => {
+const handleCreateTicket = async () => {
 
 		//if we are creating a new entry, let's refresh the page
 		setShouldRefresh(true)
@@ -45,10 +38,6 @@ const TicketFormPage = (props) => {
             status: status,
             organization: organization,
             comments: comments,
-			// createdById: createdById,
-			// createdAt: createdAt,
-			// lastModified: lastModified,
-			// lastUpdatedById: lastUpdatedById,
 		}
 		
         console.log(req);
@@ -69,27 +58,27 @@ const TicketFormPage = (props) => {
 return (
 
 <div>
-             <br/>
-		     <h1>Ticket Creation Form <VscSaveAs /></h1>
+          <br/>
+		   <h1>Ticket Creation Form <VscSaveAs /></h1>
 			 <br/>
 
-		  <Form>
-		  <FormGroup>
-          <Form.Label>Title: </Form.Label>
-          <Form.Control type="text" onChange={(e) => { setTitle(e.target.value) }} />
-          </FormGroup>
+		   <Form>
+		   <FormGroup>
+         <Form.Label>Title: </Form.Label>
+         <Form.Control type="text" onChange={(e) => { setTitle(e.target.value) }} />
+         </FormGroup>
           <br/> 
           <FormGroup>
           <Form.Label>Description: </Form.Label>
           <Form.Control type="text" onChange={(e) => { setDescription(e.target.value) }} as="textarea" rows={3} />
           </FormGroup>
           <br/>
-		  <FormGroup>
+		   <FormGroup>
           <Form.Label>RelatedTicketIds: </Form.Label>
           <Form.Control type="text" onChange={(e) => {
                setRelatedTicketIds(e.target.value);
              }} as="textarea" rows={3} />
-          </FormGroup>
+         </FormGroup>
           <br/>
           <FormGroup>
           <Form.Label>AssignedToUserId: </Form.Label>
@@ -133,10 +122,10 @@ return (
           </FormGroup>
 		    </Form>
 		    <br/>
-<Button variant="success" onClick={() => {handleCreateTicket(); navigate("/")}}>Create Ticket</Button>
+<Button variant="success" onClick={() => { handleCreateTicket(); 
+   navigate("/") } }>Create Ticket</Button>
 {" "}
-<Button variant="success" onClick={() => {navigate("/")
-          }}>Cancel</Button>
+<Button variant="success" onClick={() => { navigate("/")} }>Cancel</Button>
 
 </div>
 )
@@ -152,6 +141,35 @@ export default TicketFormPage
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//const [createdAt, setCreatedAt] = useState("")
+   //const [lastModified, setLastModified] = useState("")
+
+
+// createdById: createdById,
+			// createdAt: createdAt,
+			// lastModified: lastModified,
+			// lastUpdatedById: lastUpdatedById,
+
+//const [createdById, setCreatedById] = useState("")
+//const [lastUpdatedById, setLastUpdatedById] = useState("")
 
 /* <FormGroup>
           <Form.Label>Status: </Form.Label>
