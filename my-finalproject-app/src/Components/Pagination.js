@@ -33,6 +33,34 @@ export default Pagination
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import Pagination from 'react-bootstrap/Pagination';
 
 // let active = 2;
