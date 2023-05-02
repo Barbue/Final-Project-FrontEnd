@@ -24,6 +24,8 @@ export default function Login() {
 			navigate("/");
 		} else {
 			navigate("/register");
+			alert('Please register, not a valid user!');
+			
 		}
 	};
 	return (
