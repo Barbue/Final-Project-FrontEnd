@@ -2,6 +2,10 @@
 //import HomePage from './Pages/HomePage';
 //import Layout from './Layouts/Layout';
 //import SearchBar from './Components/SearchBar'
+//import Sorting from "./Components/Sorting"
+//import { title } from 'process';
+//import { useNavigate  } from 'react-router-dom';
+//import Button from 'react-bootstrap/Button';
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -13,25 +17,21 @@ import Pagination from "./Components/Pagination";
 import PrivatePage from "./Pages/PrivatePage";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./Components/NavBar";
-//import Sorting from "./Components/Sorting"
-//import { title } from 'process';
-//import { useNavigate  } from 'react-router-dom';
 import EditTicketForm from "./Components/EditTicketForm";
-//import Button from 'react-bootstrap/Button';
+
 
 const urlEndPoint = process.env.REACT_APP_URL_ENDPOINT;
 
 function App() {
+
   //set up hooks for the state
   const [ticketList, setTicketList] = useState([]);
-
   const [shouldRefresh, setShouldRefresh] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [ticketsPerPage] = useState(3);
   const [filteredTickets, setFilteredTickets] = useState([]);
   //, setTicketsPerPage
   //const navigate = useNavigate
-
   //console.log(ticketList)
 
   //load the ticket items from the back end
@@ -62,9 +62,21 @@ function App() {
   // is "5", then the displayed page will include indexes 0-4(tickets 1-5) and end with index 5, which is not included.
   const currentTickets = filteredTickets.slice(
     indexOfFirstTicket,
-    indexOfLastTicket
+    indexOfLastTicket,
   );
   console.log(currentTickets)
+
+ 
+// Sorting title, ascending order(alphabetical):
+// Spread operator "spreads" filteredTickets into its elements, makes a copy of it, then sorts(mutates) that copy
+// A conditional (ternary) operator is used in this compare function.
+// The array of objects are sorted by comparing the return value(Unicode code point value) of one of the properties(title).
+// if value of a.title is > b.title, return 1, if not return -1
+
+// > 0 sorts a after b or [b,a]
+// < 0 sorts a before b [a,b]
+// === 0 keeps original of a and b
+
 
   const sortTicketsAsc = () => {
     const sortedTicketsAscending = [...filteredTickets].sort((a, b) => {
@@ -73,6 +85,16 @@ function App() {
     setFilteredTickets(sortedTicketsAscending);
     console.log(sortedTicketsAscending);
   };
+
+  // Sorting by title, descending order(alphabetical):
+ // Spread operator "spreads" filteredTickets into its elements, makes a copy of it, then sorts(mutates) that copy
+ // A conditional (ternary) operator is used in this compare function.
+// The array of objects are sorted by comparing the return value(Unicode code point value) of one of the properties(title).
+// if value of a.title is > b.title, return -1, if not return 1
+
+// > 0 sorts a after b or [b,a]
+// < 0 sorts a before b [a,b]
+// === 0 keeps original of a and b
 
   const sortTicketsDsc = () => {
     const sortedTicketsDescending = [...filteredTickets].sort((a, b) => {
@@ -83,8 +105,7 @@ function App() {
   };
 
   const filterTickets = (input, field) => {
-    // console.log(field, input)
-    // console.log(ticketList)
+   
     if (field.length === 0) {
       setFilteredTickets(ticketList);
       
@@ -93,6 +114,10 @@ function App() {
         return ticket[field].toLowerCase().includes(input.toLowerCase());
       });
       setFilteredTickets(filteredTickets);
+      if(filteredTickets.length === 0) {
+        alert("No ticket found!")
+      }
+      
     }
   };
 
@@ -120,6 +145,7 @@ function App() {
                   totalTickets={filteredTickets.length}
                   ticketsPerPage={ticketsPerPage}
                   setCurrentPage={setCurrentPage}
+                  currentPage={currentPage}
                 />
               </>
             }
