@@ -24,7 +24,7 @@ export default function Login() {
 			navigate("/");
 		} else {
 			navigate("/register");
-			alert('Please register, not a valid user!');
+			alert('Not a valid user!  Please register or use a valid user and password!');
 			
 		}
 	};
